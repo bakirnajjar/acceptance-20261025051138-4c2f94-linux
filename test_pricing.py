@@ -27,6 +27,10 @@ def test_receipt_reports_count_discount_and_total():
     assert receipt(items, "LOYAL5") == "5 item(s), discount 1.38, total 26.12"
 
 
+def test_receipt_with_no_items_and_unknown_code():
+    assert receipt([], "UNKNOWN") == "0 item(s), discount 0.00, total 0.00"
+
+
 def test_invalid_lines_are_rejected():
     with pytest.raises(ValueError):
         LineItem("A", 0, 100)
